@@ -13,6 +13,9 @@ jobs:
         keyboards:
           - lily58
     steps:
+      - name: Disable git safe directory checks
+        run : git config --global --add safe.directory '*'
+
       - name: Checkout
         uses: actions/checkout@v3
 
