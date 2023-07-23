@@ -29,4 +29,5 @@ jobs:
           name: ${{ matrix.keyboards }}_${{ github.actor }}
           path: |
             *.uf2
+            *.map
           
