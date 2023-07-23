@@ -23,7 +23,7 @@ $(KEYBOARDS):
 	#qmk lint -km $(USER) -kb $(PATH_$@)
 
 	# run build
-	make BUILD_DIR=$(shell pwd) -j1 -C qmk_firmware $(PATH_$@):$(USER) CONVERT_TO=elite_pi
+	make BUILD_DIR=$(shell pwd) -j1 -C qmk_firmware $(PATH_$@):default CONVERT_TO=elite_pi
 
 	# cleanup symlinks
 	for f in $(KEYBOARDS); do rm -rf ./qmk_firmware/keyboards/$(PATH_$@)/keymaps/$(USER); done
