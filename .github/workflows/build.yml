@@ -4,7 +4,8 @@ on: [push, workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:  
+    container:
+      image: qmkfm/qmk_cli
     strategy:
       fail-fast: false
       matrix:
@@ -13,7 +14,10 @@ jobs:
           - lily58
     steps:
       - name: Disable git safe directory checks
-        run: git config --global --add safe.directory '*'
+        run : git config --global --add safe.directory '*'
+
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Build firmware
         run: make ${{ matrix.keyboards }}
@@ -25,4 +29,5 @@ jobs:
           name: ${{ matrix.keyboards }}_${{ github.actor }}
           path: |
             *.uf2
+            *.map
           
